@@ -104,8 +104,8 @@ public class Sample {
     public String getOwnerId() {
         return ownerId;
     }
-}
+} ```
 
 <h3>2️⃣ Run Your Spring Boot Application</h3> <p> That’s it. On startup: </p> <ul> <li>✔ Entity is scanned</li> <li>✔ Schema is extracted</li> <li>✔ Table is created if missing</li> </ul> <hr/> <h2>🔄 Complete Startup Flow</h2> <ol> <li><b>Auto-Configuration</b> – Spring Boot loads DynamoAutoConfiguration</li> <li><b>Entity Scanning</b> – Finds all @DynamoEntity classes</li> <li><b>Schema Extraction</b> – Reads AWS annotations</li> <li><b>Table Creation</b> – Creates tables safely</li> </ol> <hr/> <h2>📊 Supported & Unsupported Features</h2> <h3>✅ Supported</h3> <ul> <li>Partition Key</li> <li>Sort Key</li> <li>Global Secondary Index (GSI)</li> <li>On-Demand & Provisioned billing</li> <li>DynamoDB Local</li> </ul> <h3>❌ Not Supported (By Design)</h3> <ul> <li>Table deletion</li> <li>Table updates</li> <li>TTL</li> <li>Streams</li> </ul> <hr/> <h2>🔐 Security & Credentials</h2> <p> This library does <b>not</b> manage AWS credentials. It relies entirely on the AWS SDK default credential provider chain. </p> <hr/>
 
-<hr/> <h2>📜 License</h2> <pre> Apache License 2.0 </pre> <hr/> <p align="center"> <b>⭐ Star the repository if this saved you time ⭐</b> </p> ```
+<hr/> <h2>📜 License</h2> <pre> Apache License 2.0 </pre> <hr/> <p align="center"> <b>⭐ Star the repository if this saved you time ⭐</b> </p>
