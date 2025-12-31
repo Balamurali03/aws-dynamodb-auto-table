@@ -1,0 +1,6 @@
+C:\Users\balam\OneDrive\Desktop\aws-dynamodb-auto-table\aws-dynamodb-auto-table\src\main\java\com\framework\dynamodb\annotation\DynamoEntity.java
+C:\Users\balam\OneDrive\Desktop\aws-dynamodb-auto-table\aws-dynamodb-auto-table\src\main\java\com\framework\dynamodb\config\DynamoAutoConfiguration.java
+C:\Users\balam\OneDrive\Desktop\aws-dynamodb-auto-table\aws-dynamodb-auto-table\src\main\java\com\framework\dynamodb\initializer\DynamoTableInitializer.java
+C:\Users\balam\OneDrive\Desktop\aws-dynamodb-auto-table\aws-dynamodb-auto-table\src\main\java\com\framework\dynamodb\scanner\DynamoEntityScanner.java
+C:\Users\balam\OneDrive\Desktop\aws-dynamodb-auto-table\aws-dynamodb-auto-table\src\main\java\com\framework\dynamodb\schema\GlobalSecondaryIndex.java
+C:\Users\balam\OneDrive\Desktop\aws-dynamodb-auto-table\aws-dynamodb-auto-table\src\main\java\com\framework\dynamodb\util\PackageScanner.java
