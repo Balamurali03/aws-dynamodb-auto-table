@@ -85,9 +85,10 @@ Add the dependency:
   <artifactId>dynamodb-auto-table</artifactId>
   <version>1.0.0</version>
 </dependency>
-
+```
 <p>No configuration required.</p> <hr/> <h2>🚀 Quick Start (5 Minutes)</h2> <h3>1️⃣ Create a DynamoDB Entity</h3>
 
+```xml
 @DynamoDbBean
 @DynamoEntity
 public class Sample {
