@@ -2,15 +2,11 @@
 # Maven
 target/
 
-# Eclipse (project-level)
+# Eclipse
 .project
 .classpath
 .settings/
 
-# Eclipse (workspace-level)
-.metadata/
-
 # OS
 .DS_Store
 Thumbs.db
-
