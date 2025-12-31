@@ -114,5 +114,5 @@ public class Sample {
 
 <p align="center"> <b>
 ©️ 2025 Balamurali R 
-</b> — Built with ❤️ for the AWS & Java community </p> <br>
+</b> — Built with ❤️ for the AWS & Java community <br>
  All rights reserved😜.</p>
