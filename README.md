@@ -81,8 +81,8 @@ Add the dependency:
 
 ```xml
 <dependency>
-  <groupId>com.framework</groupId>
-  <artifactId>dynamodb-auto-table</artifactId>
+  <groupId>io.github.framework</groupId>
+  <artifactId>aws-dynamodb-auto-table</artifactId>
   <version>1.0.0</version>
 </dependency>
 ```
