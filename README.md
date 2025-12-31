@@ -113,9 +113,6 @@ public class Sample {
 <hr/> <h2>📜 License</h2> <pre> Apache License 2.0 </pre> <hr/> <p align="center"> <b>⭐ Star the repository if this saved you time ⭐</b> </p>
 
 <p align="center"> <b>
-/*
- * Copyright 2025 Balamurali
- *
- * Licensed under the Apache License, Version 2.0
- */
-</b> </p>
+©️ 2025 Balamurali R 
+</b> — Built with ❤️ for the AWS & Java community </p> <br>
+ All rights reserved😜.</p>
