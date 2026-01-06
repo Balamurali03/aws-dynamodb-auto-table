@@ -95,13 +95,11 @@ In real-world microservices, teams struggle with:
 <h2>📦 Installation</h2>
 
 ```xml
-<pre style="background:#f6f8fa; padding:15px; border-radius:6px;">
-&lt;dependency&gt;
-  &lt;groupId&gt;io.github.balamurali03&lt;/groupId&gt;
-  &lt;artifactId&gt;dynamodb-auto-table&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0&lt;/version&gt;
-&lt;/dependency&gt;
-</pre>
+<dependency>
+  <groupId>io.github.balamurali03</groupId>
+  <artifactId>dynamodb-auto-table</artifactId>
+  <version>1.0.0</version>
+</dependency>
 ```
 <p><i>No additional configuration is required.</i></p>
 
