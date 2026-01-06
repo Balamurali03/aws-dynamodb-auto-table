@@ -7,24 +7,53 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.framework</groupId>
+    <!-- ✅ Maven Central–safe coordinates -->
+    <groupId>io.github.balamurali03</groupId>
     <artifactId>aws-dynamodb-auto-table</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>AWS DynamoDB Auto Table</name>
     <description>
-        AWS-grade framework to auto-create DynamoDB tables
-        from Enhanced Client annotations
+        Spring Boot AutoConfiguration library to automatically
+        create DynamoDB tables from DynamoDB Enhanced Client annotations.
+        Supports WebFlux, MVC, DynamoDB Local, and IAM-based authentication
+        with zero YAML or properties configuration.
     </description>
+
+    <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
+
+    <!-- ✅ REQUIRED FOR MAVEN CENTRAL -->
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>balamurali03</id>
+            <name>Balamurali</name>
+            <url>https://github.com/Balamurali03</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/Balamurali03/aws-dynamodb-auto-table.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
+        <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
+    </scm>
 
     <properties>
         <java.version>17</java.version>
         <spring.boot.version>3.2.1</spring.boot.version>
         <aws.sdk.version>2.25.10</aws.sdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- ✅ THIS FIXES YOUR ERROR -->
+    <!-- ✅ Spring Boot dependency alignment -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -39,7 +68,7 @@
 
     <dependencies>
 
-        <!-- Spring Core (NO web, NO app) -->
+        <!-- Spring Boot AutoConfiguration -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
@@ -50,7 +79,7 @@
             <artifactId>spring-context</artifactId>
         </dependency>
 
-        <!-- AWS SDK -->
+        <!-- AWS SDK DynamoDB -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>dynamodb</artifactId>
@@ -58,11 +87,10 @@
         </dependency>
 
         <dependency>
-    <groupId>software.amazon.awssdk</groupId>
-    <artifactId>dynamodb-enhanced</artifactId>
-    <version>${aws.sdk.version}</version>
-</dependency>
-
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>dynamodb-enhanced</artifactId>
+            <version>${aws.sdk.version}</version>
+        </dependency>
 
         <!-- Logging API -->
         <dependency>
@@ -70,31 +98,31 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
 
-        <!-- Optional: validation -->
+        <!-- Optional validation -->
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
 
-        <!-- Tests -->
+		<!-- Lombok -->
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Classpath scanning -->
-<dependency>
-    <groupId>org.reflections</groupId>
-    <artifactId>reflections</artifactId>
-    <version>0.10.2</version>
-</dependency>
-
 
     </dependencies>
 
     <build>
         <plugins>
-            <!-- ❌ NO executable jar -->
+
+            <!-- ❌ Disable executable JAR -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -102,15 +130,63 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+
+            <!-- Java 17 -->
             <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.11.0</version>
-    <configuration>
-        <source>17</source>
-        <target>17</target>
-    </configuration>
-</plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+
+            <!-- ✅ Sources JAR (MANDATORY) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ✅ Javadoc JAR (MANDATORY) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ✅ GPG signing (MANDATORY) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>

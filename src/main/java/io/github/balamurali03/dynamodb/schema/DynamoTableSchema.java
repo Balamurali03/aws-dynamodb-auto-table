@@ -1,4 +1,4 @@
-package com.framework.dynamodb.schema;
+package io.github.balamurali03.dynamodb.schema;
 
 import java.util.Map;
 

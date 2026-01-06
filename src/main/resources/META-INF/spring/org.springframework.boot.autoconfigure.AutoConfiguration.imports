@@ -1,1 +1,1 @@
-com.framework.dynamodb.config.DynamoAutoConfiguration
+io.github.balamurali03.dynamodb.config.DynamoAutoConfiguration

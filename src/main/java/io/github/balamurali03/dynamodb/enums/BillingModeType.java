@@ -1,4 +1,4 @@
-package com.framework.dynamodb.enums;
+package io.github.balamurali03.dynamodb.enums;
 
 public enum BillingModeType {
     PAY_PER_REQUEST,

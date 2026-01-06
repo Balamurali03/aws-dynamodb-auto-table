@@ -1,8 +1,8 @@
-package com.framework.dynamodb.annotation;
+package io.github.balamurali03.dynamodb.annotation;
 
 import java.lang.annotation.*;
 
-import com.framework.dynamodb.enums.BillingModeType;
+import io.github.balamurali03.dynamodb.enums.BillingModeType;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
