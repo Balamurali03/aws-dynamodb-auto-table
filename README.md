@@ -98,7 +98,7 @@ In real-world microservices, teams struggle with:
 <dependency>
   <groupId>io.github.balamurali03</groupId>
   <artifactId>dynamodb-auto-table</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
 <p><i>No additional configuration is required.</i></p>
