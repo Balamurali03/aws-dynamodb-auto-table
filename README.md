@@ -93,6 +93,7 @@ In real-world microservices, teams struggle with:
 <hr/>
 
 <h2>📦 Installation</h2>
+
 ```xml
 <pre style="background:#f6f8fa; padding:15px; border-radius:6px;">
 &lt;dependency&gt;
