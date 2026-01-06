@@ -93,7 +93,7 @@ In real-world microservices, teams struggle with:
 <hr/>
 
 <h2>📦 Installation</h2>
-
+```xml
 <pre style="background:#f6f8fa; padding:15px; border-radius:6px;">
 &lt;dependency&gt;
   &lt;groupId&gt;io.github.balamurali03&lt;/groupId&gt;
@@ -101,7 +101,7 @@ In real-world microservices, teams struggle with:
   &lt;version&gt;1.0.0&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
-
+```
 <p><i>No additional configuration is required.</i></p>
 
 <hr/>
