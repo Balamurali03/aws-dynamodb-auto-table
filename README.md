@@ -111,22 +111,21 @@ In real-world microservices, teams struggle with:
 
 <pre style="background:#f6f8fa; padding:15px; border-radius:6px;">
 @DynamoDbBean
-@DynamoEntity
-public class Sample {
-
-    private String sampleId;
-    private String ownerId;
+@DynamoEntity(tableName = "users") OR @DynamoEntity
+public class User {
 
     @DynamoDbPartitionKey
-    public String getSampleId() {
-        return sampleId;
-    }
+    private String userId;
 
-    @DynamoDbSecondaryPartitionKey(indexNames = "owner-index")
-    public String getOwnerId() {
-        return ownerId;
-    }
+    @DynamoDbSortKey
+    private String createdAt;
+
+    @DynamoDbSecondaryPartitionKey(indexNames = "email-index")
+    private String email;
+
+    // getters & setters
 }
+
 </pre>
 
 <h3>2️⃣ Run Your Spring Boot Application</h3>
