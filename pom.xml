@@ -7,10 +7,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- ✅ Maven Central–safe coordinates -->
+    <!-- ✅ Maven Central coordinates -->
     <groupId>io.github.balamurali03</groupId>
     <artifactId>aws-dynamodb-auto-table</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>AWS DynamoDB Auto Table</name>
@@ -23,7 +23,7 @@
 
     <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
 
-    <!-- ✅ REQUIRED FOR MAVEN CENTRAL -->
+    <!-- ✅ License (MANDATORY) -->
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -32,19 +32,34 @@
         </license>
     </licenses>
 
+    <!-- ✅ Developer info -->
     <developers>
         <developer>
             <id>balamurali03</id>
             <name>Balamurali</name>
+            <email>balamurali.rengan@gmail.com</email>
             <url>https://github.com/Balamurali03</url>
         </developer>
     </developers>
 
+    <!-- ✅ SCM (MANDATORY) -->
     <scm>
         <connection>scm:git:git://github.com/Balamurali03/aws-dynamodb-auto-table.git</connection>
         <developerConnection>scm:git:ssh://github.com:Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
         <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
     </scm>
+
+    <!-- ✅ Sonatype deployment -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <java.version>17</java.version>
@@ -53,9 +68,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- ✅ Spring Boot dependency alignment -->
+    <!-- ✅ Dependency alignment -->
     <dependencyManagement>
         <dependencies>
+
+            <!-- Spring Boot BOM -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -63,6 +80,16 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- AWS SDK BOM -->
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${aws.sdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -79,17 +106,15 @@
             <artifactId>spring-context</artifactId>
         </dependency>
 
-        <!-- AWS SDK DynamoDB -->
+        <!-- AWS DynamoDB -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>dynamodb</artifactId>
-            <version>${aws.sdk.version}</version>
         </dependency>
 
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>dynamodb-enhanced</artifactId>
-            <version>${aws.sdk.version}</version>
         </dependency>
 
         <!-- Logging API -->
@@ -104,12 +129,13 @@
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
 
-		<!-- Lombok -->
-		<dependency>
+        <!-- Lombok (optional) -->
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -122,10 +148,11 @@
     <build>
         <plugins>
 
-            <!-- ❌ Disable executable JAR -->
+            <!-- ❌ Disable executable Spring Boot JAR -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -142,11 +169,11 @@
                 </configuration>
             </plugin>
 
-            <!-- ✅ Sources JAR (MANDATORY) -->
+            <!-- ✅ Sources JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.3.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -157,11 +184,14 @@
                 </executions>
             </plugin>
 
-            <!-- ✅ Javadoc JAR (MANDATORY) -->
+            <!-- ✅ Javadoc JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.6.3</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -172,7 +202,7 @@
                 </executions>
             </plugin>
 
-            <!-- ✅ GPG signing (MANDATORY) -->
+            <!-- ✅ GPG signing -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
