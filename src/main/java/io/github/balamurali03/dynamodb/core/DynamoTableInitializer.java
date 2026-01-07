@@ -33,19 +33,20 @@ public class DynamoTableInitializer {
         // 1️⃣ Check if table already exists
         try {
             client.describeTable(r -> r.tableName(tableName));
-            log.debug("DynamoDB table already exists: {}", tableName);
+            log.info("DynamoDB table already exists: {}", tableName);
             return;
         } catch (ResourceNotFoundException ignored) {
             // continue → create table
         }
 
         try {
-            DynamoTableSchema schema =
-                    DynamoSchemaExtractor.extract(entityClass);
+            DynamoTableSchema schema = DynamoSchemaExtractor.extract(entityClass);
 
-            /* =====================================================
-               ✅ BUILD ATTRIBUTE DEFINITIONS (KEYS ONLY)
-               ===================================================== */
+            /*
+             * =====================================================
+             * ✅ BUILD ATTRIBUTE DEFINITIONS (KEYS ONLY)
+             * =====================================================
+             */
 
             Set<String> keyAttributes = new LinkedHashSet<>();
 
@@ -70,16 +71,15 @@ public class DynamoTableInitializer {
                                 .attributeName(keyAttr)
                                 .attributeType(
                                         ScalarAttributeType.fromValue(
-                                                schema.attributes().get(keyAttr)
-                                        )
-                                )
-                                .build()
-                );
+                                                schema.attributes().get(keyAttr)))
+                                .build());
             }
 
-            /* =====================================================
-               ✅ KEY SCHEMA
-               ===================================================== */
+            /*
+             * =====================================================
+             * ✅ KEY SCHEMA
+             * =====================================================
+             */
 
             List<KeySchemaElement> keySchema = new ArrayList<>();
             keySchema.add(KeySchemaElement.builder()
@@ -94,41 +94,39 @@ public class DynamoTableInitializer {
                         .build());
             }
 
-            CreateTableRequest.Builder builder =
-                    CreateTableRequest.builder()
-                            .tableName(tableName)
-                            .attributeDefinitions(attributeDefinitions)
-                            .keySchema(keySchema);
+            CreateTableRequest.Builder builder = CreateTableRequest.builder()
+                    .tableName(tableName.toLowerCase())
+                    .attributeDefinitions(attributeDefinitions)
+                    .keySchema(keySchema);
 
-            /* =====================================================
-               ✅ GLOBAL SECONDARY INDEXES
-               ===================================================== */
+            /*
+             * =====================================================
+             * ✅ GLOBAL SECONDARY INDEXES
+             * =====================================================
+             */
 
             if (!schema.globalSecondaryIndexes().isEmpty()) {
                 List<GlobalSecondaryIndex> gsis = new ArrayList<>();
                 schema.globalSecondaryIndexes().values()
-                        .forEach(gsi ->
-                                gsis.add(
-                                        gsi.toAwsGsi(
-                                                entity.readCapacity(),
-                                                entity.writeCapacity()
-                                        )
-                                )
-                        );
+                        .forEach(gsi -> gsis.add(
+                                gsi.toAwsGsi(
+                                        entity.readCapacity(),
+                                        entity.writeCapacity())));
                 builder.globalSecondaryIndexes(gsis);
             }
 
-            /* =====================================================
-               ✅ BILLING MODE
-               ===================================================== */
+            /*
+             * =====================================================
+             * ✅ BILLING MODE
+             * =====================================================
+             */
 
             if (entity.billingMode().isProvisioned()) {
                 builder.provisionedThroughput(
                         ProvisionedThroughput.builder()
                                 .readCapacityUnits(entity.readCapacity())
                                 .writeCapacityUnits(entity.writeCapacity())
-                                .build()
-                );
+                                .build());
             } else {
                 builder.billingMode(BillingMode.PAY_PER_REQUEST);
             }
@@ -141,8 +139,7 @@ public class DynamoTableInitializer {
                     "❌ Failed to create DynamoDB table '{}' for entity {}",
                     tableName,
                     entityClass.getName(),
-                    ex
-            );
+                    ex);
         }
     }
 }
