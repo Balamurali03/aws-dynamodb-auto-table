@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://central.sonatype.com/artifact/io.github.balamurali03/aws-dynamodb-auto-table">
+  <a href="https://central.sonatype.com/artifact/io.github.balamurali03/aws-dynamodb-auto-table" style="text-decoration: none;">
     <img src="https://img.shields.io/maven-central/v/io.github.balamurali03/aws-dynamodb-auto-table.svg" />
   </a>
   <img src="https://img.shields.io/badge/AWS-DynamoDB-orange" />
