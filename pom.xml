@@ -7,6 +7,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Coordinates -->
     <groupId>io.github.balamurali03</groupId>
     <artifactId>aws-dynamodb-auto-table</artifactId>
     <version>1.0.0</version>
@@ -16,17 +17,16 @@
     <description>
         Spring Boot AutoConfiguration library to automatically
         create DynamoDB tables from DynamoDB Enhanced Client annotations.
-        Supports WebFlux, MVC, DynamoDB Local, and IAM-based authentication
-        with zero YAML or properties configuration.
     </description>
 
     <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
 
-    <!-- License -->
+    <!-- License (MANDATORY) -->
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
             <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
 
@@ -40,13 +40,21 @@
         </developer>
     </developers>
 
-    <!-- SCM -->
+    <!-- SCM (REQUIRED) -->
     <scm>
         <connection>scm:git:git://github.com/Balamurali03/aws-dynamodb-auto-table.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com:Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
         <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
         <tag>v1.0.0</tag>
     </scm>
+
+    <!-- ✅ CORRECT DEPLOYMENT TARGET -->
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <java.version>17</java.version>
@@ -114,7 +122,7 @@
     <build>
         <plugins>
 
-            <!-- Disable Boot executable -->
+            <!-- Disable Spring Boot executable JAR -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -142,7 +150,9 @@
                 <executions>
                     <execution>
                         <id>attach-sources</id>
-                        <goals><goal>jar</goal></goals>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -158,12 +168,14 @@
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
-                        <goals><goal>jar</goal></goals>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
 
-            <!-- GPG -->
+            <!-- GPG SIGNING -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -172,21 +184,11 @@
                     <execution>
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
-                        <goals><goal>sign</goal></goals>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
                     </execution>
                 </executions>
-            </plugin>
-
-            <!-- ✅ CENTRAL PUBLISHING (REQUIRED) -->
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.5.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publishingServerId>central</publishingServerId>
-                    <autoPublish>true</autoPublish>
-                </configuration>
             </plugin>
 
         </plugins>
