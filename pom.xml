@@ -7,7 +7,6 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Maven Central coordinates -->
     <groupId>io.github.balamurali03</groupId>
     <artifactId>aws-dynamodb-auto-table</artifactId>
     <version>1.0.0</version>
@@ -23,16 +22,15 @@
 
     <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
 
-    <!-- License (MANDATORY) -->
+    <!-- License -->
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
             <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
         </license>
     </licenses>
 
-    <!-- Developer info -->
+    <!-- Developer -->
     <developers>
         <developer>
             <id>balamurali03</id>
@@ -42,21 +40,13 @@
         </developer>
     </developers>
 
-    <!-- SCM (REQUIRED) -->
+    <!-- SCM -->
     <scm>
         <connection>scm:git:git://github.com/Balamurali03/aws-dynamodb-auto-table.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com/Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
         <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
         <tag>v1.0.0</tag>
     </scm>
-
-    <!-- ✅ NEW Maven Central deployment -->
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <url>https://central.sonatype.com/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
 
     <properties>
         <java.version>17</java.version>
@@ -65,10 +55,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Dependency alignment -->
+    <!-- Dependency Management -->
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -84,7 +73,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
@@ -93,11 +81,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
         </dependency>
 
         <dependency>
@@ -126,19 +109,12 @@
             <optional>true</optional>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <optional>true</optional>
-        </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
 
-            <!-- Disable executable Spring Boot JAR -->
+            <!-- Disable Boot executable -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -154,8 +130,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <release>17</release>
                 </configuration>
             </plugin>
 
@@ -167,9 +142,7 @@
                 <executions>
                     <execution>
                         <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
+                        <goals><goal>jar</goal></goals>
                     </execution>
                 </executions>
             </plugin>
@@ -185,9 +158,7 @@
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
+                        <goals><goal>jar</goal></goals>
                     </execution>
                 </executions>
             </plugin>
@@ -201,11 +172,21 @@
                     <execution>
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
+                        <goals><goal>sign</goal></goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- ✅ CENTRAL PUBLISHING (REQUIRED) -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.5.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                </configuration>
             </plugin>
 
         </plugins>
