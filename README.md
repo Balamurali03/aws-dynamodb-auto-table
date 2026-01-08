@@ -1,5 +1,5 @@
 <h1 align="center" style="font-size:42px;">
-  🚀 dynamodb-auto-table
+  🚀 aws-dynamodb-auto-table
 </h1>
 
 <p align="center" style="font-size:18px; color:#555;">
@@ -7,18 +7,22 @@
 </p>
 
 <p align="center">
+  <a href="https://central.sonatype.com/artifact/io.github.balamurali03/aws-dynamodb-auto-table">
+    <img src="https://img.shields.io/maven-central/v/io.github.balamurali03/aws-dynamodb-auto-table.svg" />
+  </a>
   <img src="https://img.shields.io/badge/AWS-DynamoDB-orange" />
   <img src="https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen" />
   <img src="https://img.shields.io/badge/Java-17+-blue" />
   <img src="https://img.shields.io/badge/License-Apache%202.0-lightgrey" />
 </p>
 
+
 <hr style="margin:30px 0;"/>
 
 <h2>✨ What is this?</h2>
 
 <p style="font-size:15px;">
-  <b>dynamodb-auto-table</b> is a <b>Spring Boot auto-configuration library</b> that automatically creates
+  <b>aws-dynamodb-auto-table</b> is a <b>Spring Boot auto-configuration library</b> that automatically creates
   DynamoDB tables <b>at application startup</b> by reading schema information directly from
   <b>AWS DynamoDB Enhanced Client annotations</b>.
 </p>
@@ -97,8 +101,8 @@ In real-world microservices, teams struggle with:
 ```xml
 <dependency>
   <groupId>io.github.balamurali03</groupId>
-  <artifactId>dynamodb-auto-table</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <artifactId>aws-dynamodb-auto-table</artifactId>
+  <version>1.0.0</version>
 </dependency>
 ```
 <p><i>No additional configuration is required.</i></p>
