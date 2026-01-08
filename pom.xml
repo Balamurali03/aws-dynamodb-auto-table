@@ -42,23 +42,19 @@
         </developer>
     </developers>
 
-    <!-- SCM (FIXED & VERIFIED) -->
+    <!-- SCM (REQUIRED) -->
     <scm>
         <connection>scm:git:git://github.com/Balamurali03/aws-dynamodb-auto-table.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com:Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
         <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
         <tag>v1.0.0</tag>
     </scm>
 
-    <!-- Sonatype deployment -->
+    <!-- ✅ NEW Maven Central deployment -->
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <id>central</id>
+            <url>https://central.sonatype.com/repository/maven-releases/</url>
         </repository>
     </distributionManagement>
 
@@ -73,7 +69,6 @@
     <dependencyManagement>
         <dependencies>
 
-            <!-- Spring Boot BOM -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -82,7 +77,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- AWS SDK BOM -->
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>bom</artifactId>
@@ -96,7 +90,6 @@
 
     <dependencies>
 
-        <!-- Spring Boot AutoConfiguration -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
@@ -107,7 +100,6 @@
             <artifactId>spring-context</artifactId>
         </dependency>
 
-        <!-- AWS DynamoDB -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>dynamodb</artifactId>
@@ -118,26 +110,22 @@
             <artifactId>dynamodb-enhanced</artifactId>
         </dependency>
 
-        <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
 
-        <!-- Validation -->
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
 
-        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- Tests (library-safe) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -171,7 +159,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Sources JAR -->
+            <!-- Sources -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -186,7 +174,7 @@
                 </executions>
             </plugin>
 
-            <!-- Javadoc JAR -->
+            <!-- Javadocs -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -204,7 +192,7 @@
                 </executions>
             </plugin>
 
-            <!-- GPG signing -->
+            <!-- GPG -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
