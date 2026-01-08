@@ -7,7 +7,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- ✅ Maven Central coordinates -->
+    <!-- Maven Central coordinates -->
     <groupId>io.github.balamurali03</groupId>
     <artifactId>aws-dynamodb-auto-table</artifactId>
     <version>1.0.0</version>
@@ -23,7 +23,7 @@
 
     <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
 
-    <!-- ✅ License (MANDATORY) -->
+    <!-- License (MANDATORY) -->
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -32,7 +32,7 @@
         </license>
     </licenses>
 
-    <!-- ✅ Developer info -->
+    <!-- Developer info -->
     <developers>
         <developer>
             <id>balamurali03</id>
@@ -42,14 +42,15 @@
         </developer>
     </developers>
 
-    <!-- ✅ SCM (MANDATORY) -->
+    <!-- SCM (FIXED & VERIFIED) -->
     <scm>
         <connection>scm:git:git://github.com/Balamurali03/aws-dynamodb-auto-table.git</connection>
-        <developerConnection>scm:git:ssh://github.com:Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com/Balamurali03/aws-dynamodb-auto-table.git</developerConnection>
         <url>https://github.com/Balamurali03/aws-dynamodb-auto-table</url>
+        <tag>v1.0.0</tag>
     </scm>
 
-    <!-- ✅ Sonatype deployment -->
+    <!-- Sonatype deployment -->
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -68,7 +69,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- ✅ Dependency alignment -->
+    <!-- Dependency alignment -->
     <dependencyManagement>
         <dependencies>
 
@@ -117,30 +118,31 @@
             <artifactId>dynamodb-enhanced</artifactId>
         </dependency>
 
-        <!-- Logging API -->
+        <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
 
-        <!-- Optional validation -->
+        <!-- Validation -->
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
 
-        <!-- Lombok (optional) -->
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- Testing -->
+        <!-- Tests (library-safe) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>
@@ -148,7 +150,7 @@
     <build>
         <plugins>
 
-            <!-- ❌ Disable executable Spring Boot JAR -->
+            <!-- Disable executable Spring Boot JAR -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -169,7 +171,7 @@
                 </configuration>
             </plugin>
 
-            <!-- ✅ Sources JAR -->
+            <!-- Sources JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -184,7 +186,7 @@
                 </executions>
             </plugin>
 
-            <!-- ✅ Javadoc JAR -->
+            <!-- Javadoc JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -202,7 +204,7 @@
                 </executions>
             </plugin>
 
-            <!-- ✅ GPG signing -->
+            <!-- GPG signing -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
